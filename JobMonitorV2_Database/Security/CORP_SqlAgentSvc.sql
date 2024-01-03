@@ -1,0 +1,2 @@
+﻿CREATE USER [CORP\SqlAgentSvc] FOR LOGIN [CORP\SqlAgentSvc];
+

@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>JobMonitorV2_Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{3e166fa2-c35c-4d2b-805e-b1565124f385}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>JobMonitorV2_Database</RootNamespace>
+    <AssemblyName>JobMonitorV2_Database</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="stg\" />
+    <Folder Include="stg\Tables\" />
+    <Folder Include="job\" />
+    <Folder Include="job\Tables\" />
+    <Folder Include="hub\" />
+    <Folder Include="hub\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="stg\Stored Procedures\" />
+    <Folder Include="job\Stored Procedures\" />
+    <Folder Include="hub\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\V3_FailedJobList.sql" />
+    <Build Include="dbo\Tables\RunConfigurations.sql" />
+    <Build Include="dbo\Tables\AdhocReports.sql" />
+    <Build Include="stg\Tables\V3_FailedJobList.sql" />
+    <Build Include="job\Tables\Settings.sql" />
+    <Build Include="job\Tables\OnDemand.sql" />
+    <Build Include="job\Tables\JobTags.sql" />
+    <Build Include="job\Tables\HistoricThreshold.sql" />
+    <Build Include="job\Tables\PreReqList.sql" />
+    <Build Include="job\Tables\ExcludeList.sql" />
+    <Build Include="job\Tables\ExcludeStepsList.sql" />
+    <Build Include="job\Tables\WatchList.sql" />
+    <Build Include="job\Tables\Tier.sql" />
+    <Build Include="job\Tables\FailureClassifications.sql" />
+    <Build Include="hub\Tables\ServerRunDetails.sql" />
+    <Build Include="hub\Tables\ServerDetails.sql" />
+    <Build Include="hub\Tables\Settings.sql" />
+    <Build Include="Security\kochjobmonitor.sql" />
+    <Build Include="Security\CORP_SqlAgentSvc.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="dbo\Functions\udf_IntToDateTime.sql" />
+    <Build Include="stg\Stored Procedures\TRUNCATE_DetailsCompiledData.sql" />
+    <Build Include="stg\Stored Procedures\TRUNCATE_StepDetailsCompiledData.sql" />
+    <Build Include="stg\Stored Procedures\DELETE_FailedJobs.sql" />
+    <Build Include="stg\Stored Procedures\INSERT_FailedJob.sql" />
+    <Build Include="stg\Stored Procedures\TRUNCATE_Outcomes.sql" />
+    <Build Include="stg\Stored Procedures\TRUNCATE_StepDetails.sql" />
+    <Build Include="stg\Stored Procedures\TRUNCATE_Details.sql" />
+    <Build Include="job\Stored Procedures\INSERT_StepDetailsCompiledData.sql" />
+    <Build Include="job\Stored Procedures\INSERT_DetailsCompiledData.sql" />
+    <Build Include="job\Stored Procedures\INSERT_Activity_Tier8.sql" />
+    <Build Include="job\Stored Procedures\INSERT_Activity_Tier7.sql" />
+    <Build Include="job\Stored Procedures\INSERT_Activity_Tier6.sql" />
+    <Build Include="job\Stored Procedures\INSERT_Activity_Tier5.sql" />
+    <Build Include="job\Stored Procedures\INSERT_Activity_Tier4.sql" />
+    <Build Include="job\Stored Procedures\INSERT_Activity_Tier3.sql" />
+    <Build Include="job\Stored Procedures\INSERT_Activity_Tier2.sql" />
+    <Build Include="job\Stored Procedures\INSERT_Activity_Tier1.sql" />
+    <Build Include="job\Stored Procedures\MERGE_FailedJob_Data.sql" />
+    <Build Include="job\Stored Procedures\PURGE_FailedJobData.sql" />
+    <Build Include="job\Stored Procedures\SELECT_DetailsJobIds.sql" />
+    <Build Include="job\Stored Procedures\INSERT_HistoricalData_Tier8.sql" />
+    <Build Include="job\Stored Procedures\LOAD_Details_cte.sql" />
+    <Build Include="job\Stored Procedures\INSERT_HistoricalData_Tier7.sql" />
+    <Build Include="job\Stored Procedures\LOAD_StepDetails_cte.sql" />
+    <Build Include="job\Stored Procedures\INSERT_HistoricalData_Tier6.sql" />
+    <Build Include="job\Stored Procedures\INSERT_HistoricalData_Tier5.sql" />
+    <Build Include="job\Stored Procedures\INSERT_HistoricalData_Tier4.sql" />
+    <Build Include="job\Stored Procedures\INSERT_HistoricalData_Tier3.sql" />
+    <Build Include="job\Stored Procedures\INSERT_HistoricalData_Tier2.sql" />
+    <Build Include="job\Stored Procedures\INSERT_HistoricalData_Tier1.sql" />
+    <Build Include="job\Stored Procedures\PURGE_LoggingTables.sql" />
+    <Build Include="job\Stored Procedures\SELECT_DeterminePrimaryNode.sql" />
+    <Build Include="job\Stored Procedures\UPDATE_RunJobOnDemand.sql" />
+    <Build Include="job\Stored Procedures\UPDATE_BlackListJob.sql" />
+    <Build Include="job\Stored Procedures\SELECT_RunJobOnDemand.sql" />
+    <Build Include="job\Stored Procedures\PURGE_Outcomes.sql" />
+    <Build Include="job\Stored Procedures\INSERT_Outcomes.sql" />
+    <Build Include="job\Stored Procedures\PURGE_HistoricalData.sql" />
+    <Build Include="job\Stored Procedures\INSERT_StepDetails.sql" />
+    <Build Include="job\Stored Procedures\LOAD_StepDetails_cte_OriginalVersion.sql" />
+    <Build Include="job\Stored Procedures\INSERT_Details.sql" />
+    <Build Include="job\Stored Procedures\SELECT_ServerDisplay_cte_diag.sql" />
+    <Build Include="job\Stored Procedures\SELECT_PreReqJobs_cte.sql" />
+    <Build Include="job\Stored Procedures\SELECT_StepDetails_cte.sql" />
+    <Build Include="job\Stored Procedures\SELECT_Details_cte_Diag.sql" />
+    <Build Include="job\Stored Procedures\SELECT_ServerDisplay_cte.sql" />
+    <Build Include="job\Stored Procedures\UPDATE_FirstAid.sql" />
+    <Build Include="job\Stored Procedures\SELECT_Details_cte.sql" />
+    <Build Include="job\Stored Procedures\PURGE_Activity.sql" />
+    <Build Include="job\Stored Procedures\UPDATE_WatchList.sql" />
+    <Build Include="job\Stored Procedures\DELETE_job.sql" />
+    <Build Include="job\Stored Procedures\RESET_FAILOVER.sql" />
+    <Build Include="job\Stored Procedures\RESET_TierAndHistoryForJob.sql" />
+    <Build Include="job\Stored Procedures\SELECT_FailedJobs_cte.sql" />
+    <Build Include="job\Stored Procedures\SELECT_TrailerCoopJobsDetails.sql" />
+    <Build Include="job\Stored Procedures\SELECT_TrailerCoopJobStatus.sql" />
+    <Build Include="job\Stored Procedures\INSERT_DetailsCompiledDataAzure.sql" />
+    <Build Include="job\Stored Procedures\INSERT_StepDetailsCompiledDataAzure.sql" />
+    <Build Include="job\Stored Procedures\SELECT_CompiledStepDetails.sql" />
+    <Build Include="job\Stored Procedures\SELECT_CompiledDetails.sql" />
+    <Build Include="hub\Stored Procedures\SELECT_DetailsForPurge.sql" />
+    <Build Include="hub\Stored Procedures\INSERT_PurgeDetails.sql" />
+    <Build Include="hub\Stored Procedures\INSERT_SsisError.sql" />
+    <Build Include="hub\Stored Procedures\INSERT_ServerRunOutcomes.sql" />
+    <Build Include="hub\Stored Procedures\SELECT_ServerDetails.sql" />
+    <Build Include="hub\Stored Procedures\INSERT_ServerRunStepDetails.sql" />
+    <Build Include="hub\Stored Procedures\INSERT_ServerRunSchedules.sql" />
+    <Build Include="hub\Stored Procedures\INSERT_ServerRunDetails.sql" />
+    <Build Include="hub\Stored Procedures\INSERT_ServerRunHistory.sql" />
+    <Build Include="hub\Stored Procedures\INSERT_ServerRunActivity.sql" />
+    <Build Include="hub\Stored Procedures\PURGE_ServerRunDetails.sql" />
+    <Build Include="Security\stg.sql" />
+    <Build Include="Security\ssis.sql" />
+    <Build Include="Security\job.sql" />
+    <Build Include="Security\hub.sql" />
+  </ItemGroup>
+</Project>
